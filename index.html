@@ -3,14 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Label LIVE – Label Design Software that Just Works</title>
+  <title>Labeon – Zebra Label Configuration & Design</title>
   <style>
     :root {
-      --blue: #2563eb;
-      --dark-blue: #1e3a8a;
-      --light-gray: #f8fafc;
-      --gray: #f1f5f9;
-      --text-color: #1f2937;
+      --primary: #2563eb;
+      --primary-dark: #1e40af;
+      --light: #f9fafb;
+      --text: #1f2937;
     }
     * {
       box-sizing: border-box;
@@ -18,76 +17,89 @@
       padding: 0;
     }
     body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-      color: var(--text-color);
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      color: var(--text);
+      background: #fff;
       line-height: 1.6;
       padding-top: 64px;
     }
     a {
-      color: inherit;
       text-decoration: none;
+      color: inherit;
+    }
+    .btn {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+    }
+    .btn-secondary {
+      background: #fff;
+      color: var(--primary);
+      border: 2px solid var(--primary);
     }
     nav {
       position: fixed;
       top: 0;
       left: 0;
-      right: 0;
+      width: 100%;
       height: 64px;
       background: #fff;
       box-shadow: 0 2px 4px rgba(0,0,0,0.05);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 1.5rem;
+      padding: 0 2rem;
       z-index: 1000;
     }
     nav .logo {
       font-weight: 700;
       font-size: 1.25rem;
-      color: var(--blue);
+      color: var(--primary);
     }
     nav ul {
       list-style: none;
       display: flex;
       gap: 1.5rem;
     }
-    nav .download-btn {
-      padding: 0.5rem 1rem;
-      background: var(--blue);
-      color: #fff;
-      border-radius: 4px;
-      font-weight: 600;
+    nav ul li a {
+      color: var(--text);
+      font-weight: 500;
+    }
+    nav .cta {
+      margin-left: 1rem;
     }
     .hero {
       min-height: calc(100vh - 64px);
       display: flex;
       flex-direction: column;
-      align-items: center;
       justify-content: center;
+      align-items: center;
       text-align: center;
-      padding: 2rem;
-      background: linear-gradient(135deg, var(--blue), var(--dark-blue));
-      color: #fff;
+      padding: 2rem 1rem;
+      background: linear-gradient(135deg,#eff6ff,#e0f2fe);
     }
     .hero h1 {
-      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-size: clamp(2rem,5vw,3rem);
       margin-bottom: 1rem;
     }
     .hero p {
       font-size: 1.125rem;
       max-width: 600px;
+      margin-bottom: 2rem;
     }
-    .hero .cta {
-      margin-top: 2rem;
-      padding: 0.75rem 1.5rem;
-      background: #fff;
-      color: var(--blue);
-      border-radius: 4px;
-      font-weight: 600;
+    .hero .actions {
+      display: flex;
+      gap: 1rem;
     }
     .features {
       padding: 4rem 1rem;
-      background: var(--light-gray);
+      max-width: 1000px;
+      margin: 0 auto;
     }
     .features h2 {
       text-align: center;
@@ -95,76 +107,78 @@
       margin-bottom: 2rem;
     }
     .feature-grid {
-      display: flex;
-      flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
       gap: 2rem;
-      justify-content: center;
     }
     .feature {
-      background: #fff;
-      padding: 2rem;
-      border-radius: 8px;
-      max-width: 250px;
-      text-align: center;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
     }
     .feature .icon {
-      font-size: 2rem;
-      margin-bottom: 1rem;
+      font-size: 1.5rem;
     }
-    .pricing {
+    .screenshot {
+      background: var(--light);
       padding: 4rem 1rem;
-      background: var(--gray);
-    }
-    .pricing h2 {
       text-align: center;
-      font-size: 2rem;
-      margin-bottom: 2rem;
     }
-    .pricing-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2rem;
-      justify-content: center;
-    }
-    .price-card {
-      background: #fff;
-      padding: 2rem;
+    .screenshot img {
+      max-width: 100%;
+      height: auto;
       border-radius: 8px;
-      flex: 1 1 280px;
-      max-width: 320px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    .screenshot p {
+      margin-top: 1rem;
+      color: #4b5563;
+    }
+    .quote {
+      padding: 4rem 1rem;
+      text-align: center;
+      font-style: italic;
+    }
+    .download-section {
+      background: var(--light);
+      padding: 4rem 1rem;
+    }
+    .download-cards {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .card {
+      flex: 1 1 260px;
+      background: #fff;
+      border-radius: 8px;
       box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      padding: 2rem;
+      text-align: center;
       display: flex;
       flex-direction: column;
     }
-    .price-card h3 {
-      font-size: 1.5rem;
-      text-align: center;
-      margin-bottom: 0.5rem;
-    }
-    .price-card .price {
-      font-size: 2rem;
-      font-weight: 700;
-      color: var(--blue);
-      text-align: center;
+    .card h3 {
+      font-size: 1.25rem;
       margin-bottom: 1rem;
     }
-    .price-card ul {
-      list-style: disc;
-      padding-left: 1.25rem;
-      margin-bottom: 2rem;
+    .card p {
+      font-size: 0.875rem;
+      color: #6b7280;
+      margin-top: 1rem;
     }
-    .price-card .btn {
-      margin-top: auto;
-      align-self: center;
-      padding: 0.5rem 1rem;
-      background: var(--blue);
-      color: #fff;
-      border-radius: 4px;
+    .support {
+      padding: 4rem 1rem;
+      text-align: center;
+    }
+    .support a {
+      color: var(--primary);
       font-weight: 600;
     }
     footer {
-      background: #111827;
+      background: #1f2937;
       color: #9ca3af;
       text-align: center;
       padding: 2rem 1rem;
@@ -181,98 +195,95 @@
       nav ul {
         display: none;
       }
-      nav .download-btn {
+      nav .cta {
         display: none;
       }
-      .feature-grid,
-      .pricing-grid {
+      .hero .actions {
         flex-direction: column;
-        align-items: center;
+      }
+      .feature-grid {
+        grid-template-columns: 1fr;
+      }
+      .download-cards {
+        flex-direction: column;
       }
     }
   </style>
 </head>
 <body>
   <nav>
-    <div class="logo">Label LIVE</div>
+    <div class="logo">Labeon</div>
     <ul>
       <li><a href="#features">Features</a></li>
-      <li><a href="#pricing">Pricing</a></li>
-      <li><a href="#">Guides</a></li>
       <li><a href="#download">Download</a></li>
+      <li><a href="#support">Support</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
-    <a href="#download" class="download-btn">Download</a>
+    <a href="#download" class="btn btn-primary cta">Download for Mac</a>
   </nav>
 
-  <section class="hero" id="download">
-    <h1>Label Design Software that Just Works</h1>
-    <p>Label LIVE makes it easy to design and print labels using your data and any printer.</p>
-    <a href="#" class="cta">Download Now</a>
+  <section class="hero">
+    <h1>The Modern App for Configuring and Designing Zebra Labels</h1>
+    <p>Labeon makes it simple to connect, configure, and create—starting with macOS, now also available on Windows.</p>
+    <div class="actions">
+      <a href="#download" class="btn btn-primary">Download for Mac</a>
+      <a href="#download" class="btn btn-secondary">Try Windows Beta</a>
+    </div>
   </section>
 
   <section class="features" id="features">
     <h2>Features</h2>
     <div class="feature-grid">
-      <div class="feature">
-        <div class="icon">🔄</div>
-        <h3>Dynamic Data</h3>
-        <p>Import spreadsheets or databases and populate labels with live data.</p>
+      <div class="feature"><div class="icon">🖨️</div><div><h3>Printer Setup</h3><p>USB, Wi‑Fi, Serial, and Ethernet Printer Setup</p></div></div>
+      <div class="feature"><div class="icon">🎯</div><div><h3>Live Label Design</h3><p>Live label design with ZPL/EPL output</p></div></div>
+      <div class="feature"><div class="icon">🧩</div><div><h3>Barcode Support</h3><p>Code128, QR, PDF417 and more</p></div></div>
+      <div class="feature"><div class="icon">🖱️</div><div><h3>Drag-and-Drop Editor</h3><p>Intuitive label editor with drag-and-drop</p></div></div>
+      <div class="feature"><div class="icon">⚙️</div><div><h3>SGD & ZPL Commands</h3><p>Get and set all SGD and ZPL commands</p></div></div>
+      <div class="feature"><div class="icon">📑</div><div><h3>Multi-tab UI</h3><p>Home, Connectivity, Quality, Settings, and Tools</p></div></div>
+      <div class="feature"><div class="icon">🌍</div><div><h3>Wide Compatibility</h3><p>Works with hundreds of Zebra models</p></div></div>
+      <div class="feature"><div class="icon">💻</div><div><h3>macOS & Windows</h3><p>macOS native experience with Windows support in beta</p></div></div>
+    </div>
+  </section>
+
+  <section class="screenshot">
+    <img src="placeholder.jpg" alt="Labeon UI preview">
+    <p>Designed for clarity. Built for control.</p>
+  </section>
+
+  <section class="quote">
+    <p>“Labeon saved us hours configuring our Zebra printers. A must-have tool for anyone using ZPL.”</p>
+  </section>
+
+  <section class="download-section" id="download">
+    <div class="download-cards">
+      <div class="card">
+        <h3>Download for Mac</h3>
+        <a href="#" class="btn btn-primary">Download</a>
+        <p>macOS 11 or later</p>
       </div>
-      <div class="feature">
-        <div class="icon">🏷️</div>
-        <h3>Barcode Support</h3>
-        <p>Generate barcodes in dozens of formats with one click.</p>
-      </div>
-      <div class="feature">
-        <div class="icon">👀</div>
-        <h3>Live Preview</h3>
-        <p>See exact label output before printing to avoid mistakes.</p>
-      </div>
-      <div class="feature">
-        <div class="icon">💻</div>
-        <h3>Works on Mac &amp; Windows</h3>
-        <p>Enjoy the same experience on both operating systems.</p>
+      <div class="card">
+        <h3>Try Windows Beta</h3>
+        <a href="#" class="btn btn-secondary">Download</a>
+        <p>Windows 10 or later</p>
       </div>
     </div>
   </section>
 
-  <section class="pricing" id="pricing">
-    <h2>Pricing</h2>
-    <div class="pricing-grid">
-      <div class="price-card">
-        <h3>Standard</h3>
-        <div class="price">$50</div>
-        <ul>
-          <li>Single user license</li>
-          <li>All basic features</li>
-          <li>Email support</li>
-        </ul>
-        <a href="#" class="btn">Buy Now</a>
-      </div>
-      <div class="price-card">
-        <h3>Pro</h3>
-        <div class="price">$100</div>
-        <ul>
-          <li>Up to 5 users</li>
-          <li>Advanced features</li>
-          <li>Priority support</li>
-        </ul>
-        <a href="#" class="btn">Buy Now</a>
-      </div>
-    </div>
+  <section class="support" id="support">
+    <h2>Support</h2>
+    <p>Need help? Email our team at <a href="mailto:support@example.com">support@example.com</a></p>
   </section>
 
   <footer id="contact">
     <div>
-      <a href="#">Privacy Policy</a> · <a href="#">Terms</a>
+      <a href="#">Privacy Policy</a> · <a href="#">Terms</a> · <a href="mailto:support@example.com">support@example.com</a>
     </div>
+    <p>Labeon is not affiliated with Zebra Technologies</p>
     <div class="social">
       <a href="#">🐦</a>
       <a href="#">📘</a>
       <a href="#">💼</a>
     </div>
-    <p>&copy; 2025 Label LIVE</p>
   </footer>
 </body>
 </html>
