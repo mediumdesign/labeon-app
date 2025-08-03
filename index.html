@@ -64,6 +64,26 @@
             border-radius: 6px;
             text-decoration: none;
         }
+        .newsletter {
+            text-align: center;
+            padding: 2rem 1rem;
+        }
+        .newsletter form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        .newsletter input[type="email"] {
+            padding: 0.5rem;
+            border-radius: 6px;
+            border: 1px solid #444;
+            background-color: #222;
+            color: #fff;
+            width: 100%;
+        }
         footer {
             text-align: center;
             padding: 2rem 1rem;
@@ -95,6 +115,17 @@
             <p>✔ Everything in Pro<br>✔ One-time payment<br>✔ Priority support</p>
             <a class="btn" href="https://buy.stripe.com/test_bIYbJle8z4TIdck8ww">Buy – $149</a>
         </div>
+    </section>
+
+    <section class="newsletter">
+        <h2>Join the beta</h2>
+        <form action="https://example.us1.list-manage.com/subscribe/post?u=YOUR_U_VALUE&amp;id=YOUR_ID_VALUE" method="post" target="_blank" novalidate>
+            <input type="email" name="EMAIL" placeholder="Email address" required>
+            <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                <input type="text" name="b_YOUR_U_VALUE_YOUR_ID_VALUE" tabindex="-1" value="">
+            </div>
+            <button class="btn" type="submit">Notify me</button>
+        </form>
     </section>
 
     <footer>
